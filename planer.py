@@ -92,20 +92,22 @@ def planner(lease_cost, monthly_cost, cash_plan, payment_type):
         if car_price > cash_plan:
             print(f"\nCar cost is to high it's more than 10% of your annual income should not exceed {cash_plan}")
 
+def results():
+    if car_price > annual_income * 0.1 and car_price > net_worth * 0.1:
+        print("\nThis is a poor financial decision. The car exceeds both your income and net worth guidelines. Consider a less expensive option.")
+        print(f"Starting out? A car up to 25% of your annual income is considered acceptable for a first vehicle. Make sure it dosent exceed: {annual_income * 0.25}")
+    elif car_price < annual_income * 0.1 and car_price < net_worth * 0.1:
+        print("\nThis is a financially sound purchase. Car price is within both your income and net worth guidelines.")
+    elif car_price > annual_income * 0.1 and car_price < net_worth * 0.1:
+        print("\nProceed with caution. The car is within your net worth but exceeds the recommended 10% of annual income. Monthly costs may strain your budget.")
+
 plan = grab_payment_type()
 lease_amount = lease_cost_grab(plan)
 down_payment, monthly_cost, cash_plan = analizer(plan)
 planner(lease_amount, monthly_cost, cash_plan, plan)
 if plan == "LEASE":
     print(f"\nThe down payment have to be atleast: {car_price * 0.20}")
-
-if car_price > annual_income * 0.1 and car_price > net_worth * 0.1:
-    print("\nThis is a poor financial decision. The car exceeds both your income and net worth guidelines. Consider a less expensive option.")
-    print(f"Starting out? A car up to 25% of your annual income is considered acceptable for a first vehicle. Make sure it dosent exceed: {annual_income * 0.25}")
-elif car_price < annual_income * 0.1 and car_price < net_worth * 0.1:
-    print("\nThis is a financially sound purchase. Car price is within both your income and net worth guidelines.")
-elif car_price > annual_income * 0.1 and car_price < net_worth * 0.1:
-    print("\nProceed with caution. The car is within your net worth but exceeds the recommended 10% of annual income. Monthly costs may strain your budget.")
+results()
 
 print("\nFor more information visit:")
 print("- 20/4/10 Rule: https://www.thebalancemoney.com/how-much-car-can-you-afford-4156674")
