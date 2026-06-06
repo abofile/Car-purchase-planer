@@ -58,11 +58,12 @@ net_worth = float(input("Enter your net worth: "))
 
 
 def grab_payment_type():
-    payment_type = input("Your payment plan Cash or Lease: ")
-    if payment_type.strip().upper() == "LEASE" or "CASH":
-        return payment_type.strip().upper()
-    elif payment_type.strip().upper() not in ("LEASE", "CASH"):
-        print("worng Entery try again")
+    while True:
+        payment_type = input("Your payment plan Cash or Lease: ")
+        if payment_type.strip().upper() in ("LEASE", "CASH"):
+            return payment_type.strip().upper()
+        elif payment_type.strip().upper() not in ("LEASE", "CASH"):
+            print("worng Entery try again")
 
 def lease_cost_grab(payment_type):
     if payment_type.strip().upper() == "LEASE":
