@@ -85,13 +85,15 @@ def analizer(purchace):
 
 def planner(lease_cost, monthly_cost, cash_plan, payment_type):
     if payment_type == "LEASE":
-        if monthly_cost < lease_cost:
+        if monthly_cost <= lease_cost:
             print(f"\nThe lease cost more than adviced the monthly payment should be no more than {monthly_cost}")
         elif monthly_cost >= lease_cost:
             print(f"\nThe lease cost is ideal it's under or equal to {monthly_cost}")
     elif payment_type == "CASH":
-        if car_price > cash_plan:
+        if car_price >= cash_plan:
             print(f"\nCar cost is to high it's more than 10% of your annual income should not exceed {cash_plan}")
+        elif car_price <= cash_plan:
+            print(f"\nCar cost is ideal it's under or equal to {cash_plan}")
 
 def results():
     if car_price > annual_income * 0.1 and car_price > net_worth * 0.1:
