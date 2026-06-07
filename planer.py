@@ -63,7 +63,7 @@ def grab_payment_type():
         if payment_type.strip().upper() in ("LEASE", "CASH"):
             return payment_type.strip().upper()
         elif payment_type.strip().upper() not in ("LEASE", "CASH"):
-            print("worng Entery try again")
+            print("Worng entry try again")
 
 def lease_cost_grab(payment_type):
     if payment_type.strip().upper() == "LEASE":
@@ -72,7 +72,7 @@ def lease_cost_grab(payment_type):
     else:
         pass
 
-def analizer(purchace):
+def analyzer(purchace):
     if purchace == "LEASE":
         down_payment = car_price * 0.20
         monthly_cost = monthly_income * 0.10
@@ -98,7 +98,7 @@ def planner(lease_cost, monthly_cost, cash_plan, payment_type):
 def results():
     if car_price > annual_income * 0.1 and car_price > net_worth * 0.1:
         print("\nThis is a poor financial decision. The car exceeds both your income and net worth guidelines. Consider a less expensive option.")
-        print(f"Starting out? A car up to 25% of your annual income is considered acceptable for a first vehicle. Make sure it dosent exceed: {annual_income * 0.25}")
+        print(f"Starting out? A car up to 25% of your annual income is considered acceptable for a first vehicle. Make sure it dosen't exceed: {annual_income * 0.25}")
     elif car_price < annual_income * 0.1 and car_price < net_worth * 0.1:
         print("\nThis is a financially sound purchase. Car price is within both your income and net worth guidelines.")
     elif car_price > annual_income * 0.1 and car_price < net_worth * 0.1:
@@ -106,7 +106,7 @@ def results():
 
 plan = grab_payment_type()
 lease_amount = lease_cost_grab(plan)
-down_payment, monthly_cost, cash_plan = analizer(plan)
+down_payment, monthly_cost, cash_plan = analyzer(plan)
 planner(lease_amount, monthly_cost, cash_plan, plan)
 if plan == "LEASE":
     print(f"\nThe down payment have to be atleast: {car_price * 0.20}")
