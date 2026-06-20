@@ -96,14 +96,20 @@ def planner(lease_cost, monthly_cost, cash_plan, payment_type):
             print(f"\nCar cost is ideal it's under or equal to {cash_plan}")
 
 def results():
-    if car_price > annual_income * 0.1 and car_price > net_worth * 0.1:
+    if car_price >= annual_income * 0.1 and car_price >= net_worth * 0.1:
         print("\nThis is a poor financial decision. The car exceeds both your income and net worth guidelines. Consider a less expensive option.")
         print(f"Starting out? A car up to 25% of your annual income is considered acceptable for a first vehicle. Make sure it dosen't exceed: {annual_income * 0.25}")
-    elif car_price < annual_income * 0.1 and car_price < net_worth * 0.1:
+    elif car_price <= annual_income * 0.1 and car_price <= net_worth * 0.1:
         print("\nThis is a financially sound purchase. Car price is within both your income and net worth guidelines.")
-    elif car_price > annual_income * 0.1 and car_price < net_worth * 0.1:
+    elif car_price >= annual_income * 0.1 and car_price <= net_worth * 0.1:
         print("\nProceed with caution. The car is within your net worth but exceeds the recommended 10% of annual income. Monthly costs may strain your budget.")
-
+    elif car_price <= annual_income * 0.1 and car_price >= net_worth * 0.1:
+        print("""
+        Proceed with caution. The car is within your income guideline but exceeds
+        10% of your net worth. This is common early in a career when income outpaces
+        accumulated savings — just be mindful of how much wealth you're tying up in
+        a depreciating asset.
+        """)
 plan = grab_payment_type()
 lease_amount = lease_cost_grab(plan)
 down_payment, monthly_cost, cash_plan = analyzer(plan)
